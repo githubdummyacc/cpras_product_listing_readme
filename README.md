@@ -2,7 +2,7 @@
 
 ### LOGIN FIRST TO GENERATE AUTHENTICATION TOKEN
 
-URL : http://staging-api.cpras.co.uk/api/login <br>
+URL : h<span>ttp</span>://staging-api.cpras.co.uk/api/login <br>
 METHOD: POST
 
 ###### PARAMETERS:
@@ -30,7 +30,7 @@ password – type: string
 
 ###### LIST PRODUCTS
 
-URL : http://staging-api.cpras.co.uk/api/products <br>
+URL : h<span>ttp</span>://staging-api.cpras.co.uk/api/products <br>
 METHOD: GET
 ###### HEADERS: 
 ```javascript
@@ -46,13 +46,13 @@ term - type: string, required: no
 ```
 ###### EXAMPLE:
 
-#### headers 
+###### headers 
 ```javascript
 {
   Authorization : Bearer some_token_here
 }
 ```
-#### parameters 
+###### parameters 
 ```
 {
   page: 1,
@@ -75,7 +75,7 @@ term - type: string, required: no
 
 ### CREATE PRODUCT
 
-URL : http://staging-api.cpras.co.uk/api/products <br>
+URL : h<span>ttp</span>://staging-api.cpras.co.uk/api/products <br>
 METHOD: POST
 ###### HEADERS:
 ```javascript
@@ -94,13 +94,13 @@ METHOD: POST
 
 ###### EXAMPLE:
 
-###### Headers 
+###### headers 
 ```javascript
 {
   Authorization : Bearer some_token_here
 }
 ```
-###### Parameters
+###### parameters
 ```javascript
 {
   "name" : "test product",
@@ -120,7 +120,7 @@ METHOD: POST
 ```
 
 ###### RESPONSE:
-```javascript
+```json
 {
   "message" : "test product has been created successfully",
   "product" : { "id" : 1 }
