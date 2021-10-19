@@ -1,81 +1,106 @@
 # Product Listing API Documentation
 
-LOGIN FIRST TO GENERATE AUTHENTICATION TOKEN
+### LOGIN FIRST TO GENERATE AUTHENTICATION TOKEN
 
 URL : http://staging-api.cpras.co.uk/api/login <br>
 METHOD: POST
 
-PARAMETERS: <br>
+###### PARAMETERS:
 ```
 email – type : string 
 password – type: string 
 ```
  
 
-EXAMPLE:
-```
+###### EXAMPLE:
+```json
 { 
-  email: test@admin.com, 
-  password: testpassword 
+  "email": "test@admin.com", 
+  "password": "testpassword" 
 }
 ```
-RESPONSE:
-```
+###### RESPONSE:
+```json
 {
-"access_token": "some_token_here",
-"token_type": "Bearer",
-"expires_at": "2022-10-19 01:10:41"
+ "access_token": "some_token_here",
+ "token_type": "Bearer",
+ "expires_at": "2022-10-19 01:10:41"
 }
 ```
 
-LIST PRODUCTS
+###### LIST PRODUCTS
 
 URL : http://staging-api.cpras.co.uk/api/products <br>
 METHOD: GET
-HEADERS: <br>
+###### HEADERS: 
+```javascript
+{ 
+  Authorization : Bearer token_from_login_action
+}
 ```
-{ Authorization : Bearer [token from login action] }
-```
-PARAMETERS:
+###### PARAMETERS:
 ```
 page – type : integer, required: no
 per_page – type: integer, required: no
 term - type: string, required: no
 ```
-EXAMPLE:
+###### EXAMPLE:
+
+#### headers 
+```javascript
+{
+  Authorization : Bearer some_token_here
+}
 ```
-headers {Authorization : Bearer some_token_here}
-Parameters {page: 1,}
+#### parameters 
 ```
-RESPONSE:
+{
+  page: 1,
+}
 ```
-{ products: [array list of products],meta: {"page": 1,"total": 2,"per_page": 10,"pages": 1}}
+###### RESPONSE:
+```javascript
+{ 
+  "products": 
+  [], //array list of products
+  "meta": 
+    {
+      "page": 1,
+      "total": 2,
+      "per_page": 10,
+      "pages": 1
+    }
+ }
 ```
 
-CREATE PRODUCT
+### CREATE PRODUCT
 
 URL : http://staging-api.cpras.co.uk/api/products <br>
 METHOD: POST
-HEADERS:
+###### HEADERS:
+```javascript
+{ 
+  Authorization : Bearer token_from_login_action
+}
 ```
-{ Authorization : Bearer [token from login action] }
-```
-PARAMETERS: <br>
-- **name** – **type** : _string_, **required**: _yes_ <br>
-- **description** – **type**: _string_, **required**: _yes_ <br>
-- **prices** - **type**: _float_, **required**: _yes_ <br>
-- **quantity** – **type** : _float_, **required**: _yes_ <br>
-- **categories** – **type** : _array_, **required**: _yes_ <br>
-- **website** – **type** : _string_, **required**: _no_ <br>
-- **product_specifications** – **type** : _array_, **required**: _no_ <br>
+###### PARAMETERS: <br>
+- **name** – **type** : **_string_**, **required**: **_yes_** <br>
+- **description** – **type**: **_string_**, **required**: **_yes_** <br>
+- **prices** - **type**: **_float_**, **required**: **_yes_** <br>
+- **quantity** – **type** : **_float_**, **required**: **_yes_** <br>
+- **categories** – **type** : **_array_**, **required**: **_yes_** <br>
+- **website** – **type** : **_string_**, **required**: **_no_** <br>
+- **product_specifications** – **type** : **_array_**, **required**: **_no_** <br>
 
-EXAMPLE:
+###### EXAMPLE:
 
-### headers 
+###### Headers 
+```javascript
+{
+  Authorization : Bearer some_token_here
+}
 ```
-{Authorization : Bearer some_token_here}
-```
-### parameters
+###### Parameters
 ```javascript
 {
   "name" : "test product",
@@ -94,11 +119,66 @@ EXAMPLE:
 }
 ```
 
-RESPONSE:
-```
+###### RESPONSE:
+```javascript
 {
-message: “test product has been created successfully”,
-product: { id: 1}
+  "message" : "test product has been created successfully",
+  "product" : { "id" : 1 }
 }
 ```
+### LIST OF UNITS
 
+```json
+"units" : [
+     { "value" : 1, "text" : "Time" },
+     { "value" : 2, "text" : "Weight" },
+     { "value" : 3, "text" : "Height" },
+     { "value" : 4, "text" : "Choice" },
+     { "value" : 5, "text" : "Speed" },
+     { "value" : 6, "text" : "length" },
+     { "value" : 7, "text" : "Option" }
+   ],
+ ```
+### VALUE 1 AS UNIT : TIME
+```json
+"time_units" : [
+  { "value" : "s", "text" : "second (s)" }, 
+  { "value" : "m", "text" : "minute (m)" },
+  { "value" : "hr", "text" : "hour (hr)" },
+],
+```
+ 
+### VALUE 2 AS UNIT : WEIGHT
+```json
+"weight_units" : [
+     { "value" : "t", "text" : "tonne (t)" },
+     { "value" : "kg", "text" : "kilogram (kg)" },
+     { "value" : "g", "text" : "gram (g)" },
+     { "value" : "mg", "text" : "milligram (mg)" },
+     { "value" : "lb", "text" : "pound (lb)" },
+     { "value" : "oz", "text" : "ounce (oz)" },
+   ],
+ ```
+### VALUE 6 AS UNIT : LENGTH
+```json
+"length_units" : [
+    { "value" : "mm", "text" : "millimeter (mm)" }, 
+    { "value" : "cm", "text" : "centimeter (cm)" },
+    { "value" : "m", "text" : "meter (m)" },
+    { "value" : "km", "text" : "kilometer (km)" },
+    { "value" : "in", "text" : "inch (in)" },
+    { "value" : "yd", "text" : "foot (ft)" },
+    { "value" : "mi", "text": "mile (mi)" },
+    { "value" : "nmi", "text" : "nautical mile (nmi)" },
+  ],
+```
+### VALUE 5 AS UNIT : SPEED
+```json
+"speed_units" : [
+    { "value" : "m/s", "text" : "metres per second (m/s)" }, 
+    { "value" : "km/h", "text" : "kilometres per hour (km/h)" },
+    { "value" : "mph", "text" : "miles per hour (mph)" },
+    { "value" : "ft/s", "text" : "Foot per second (ft/s)" },
+    { "value" : "Kn", "text" : "Knot (kn)" },
+  ],
+```
