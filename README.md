@@ -100,24 +100,36 @@ METHOD: POST
   Authorization : Bearer some_token_here
 }
 ```
-###### parameters
+###### parameters raw JSON
 ```javascript
 {
   "name" : "test product",
   "description" : "some description",
   "prices" : 100.00,
   "quantity" : 10,
-  "categories" : [1,2,3], // get category_ids from http://staging-api.cpras.co.uk/api/categories
+  "supplier_id" : 1, // set this to one at the moment
+  "categories" : 1, // get category_ids from http://staging-api.cpras.co.uk/api/categories
   "website" : "http://www.testwebsite.com",
-  "product_specifications" : [
-    "description" : "Weight",
-    "unit" : 1, // Refer to list of units
-    "specific_unit" : "kg", // refer to available specific units based from unit selected
-    "response" : 50,
-    "notes" : "size may vary"
-  ]
-}
+  "unit" : 1,  // leave this as is at the moment
+  "product_specifications" : "[{ \"specific_unit\" : \"kg\", \"notes\" : \"size may vary\", \"response\" : 1, \"specification\" : { \"description\" : \"Weight\", \"unit\" : 1, \"response\" : 50}}]"
 ```
+
+###### parameters form-data
+| Key | Value |
+| --- | --- |
+| name | Test Value |
+| description | Test Description |
+| prices | 100 |
+| supplier_id | 1 |
+| quantity | 1 |
+| categories | 1 |
+| website | testsite.site |
+| unit | 1 |
+| product_specifications | [{"specific_unit" : "kg", "notes" : "size may vary", "response" : 1,"specification" : {"description" : "Weight","unit" : "1", "response" : "50"}}] |
+
+       
+- for **unit** inside product_specifications, please refer to list of units
+- for **specific_unit**, please refer to available specific units based form unit selected
 
 ###### RESPONSE:
 ```json
