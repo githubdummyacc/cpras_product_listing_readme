@@ -171,7 +171,19 @@ METHOD: POST
      { "value" : "oz", "text" : "ounce (oz)" },
    ],
  ```
-### VALUE 6 AS UNIT : LENGTH
+
+### VALUE 5 AS UNIT : SPEED
+```json
+"speed_units" : [
+    { "value" : "m/s", "text" : "metres per second (m/s)" }, 
+    { "value" : "km/h", "text" : "kilometres per hour (km/h)" },
+    { "value" : "mph", "text" : "miles per hour (mph)" },
+    { "value" : "ft/s", "text" : "Foot per second (ft/s)" },
+    { "value" : "Kn", "text" : "Knot (kn)" },
+  ],
+```
+
+### VALUE 3 AS UNIT : HEIGHT 6 AS UNIT : LENGTH
 ```json
 "length_units" : [
     { "value" : "mm", "text" : "millimeter (mm)" }, 
@@ -182,15 +194,5 @@ METHOD: POST
     { "value" : "yd", "text" : "foot (ft)" },
     { "value" : "mi", "text": "mile (mi)" },
     { "value" : "nmi", "text" : "nautical mile (nmi)" },
-  ],
-```
-### VALUE 5 AS UNIT : SPEED
-```json
-"speed_units" : [
-    { "value" : "m/s", "text" : "metres per second (m/s)" }, 
-    { "value" : "km/h", "text" : "kilometres per hour (km/h)" },
-    { "value" : "mph", "text" : "miles per hour (mph)" },
-    { "value" : "ft/s", "text" : "Foot per second (ft/s)" },
-    { "value" : "Kn", "text" : "Knot (kn)" },
   ],
 ```
